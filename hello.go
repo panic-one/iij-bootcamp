@@ -2,29 +2,23 @@ package main
 
 import "fmt"
 
-func main() {
-	var Watashi_no_Hensu string = "GYUDON"
-	fmt.Println(Watashi_no_Hensu)
-	main2()
-}
 
-func Eat(name string) bool {
+func Eat(name string) (bool, error) {
 	if name == "" {
-		return false
-	} else {
-		fmt.Println(name)
-		return true
+		return false, fmt.Errorf("name is empty.")
 	}
+	fmt.Println(name)
+	return true, nil
 }
 
-func main2() {
+func main() {
 	var name1 string = "GYUDON"
-	if ok := Eat(name1); !ok {
-		fmt.Println("cannot eat: ", name1)
+	if _, err := Eat(name1); err != nil {
+		fmt.Println("cannot eat: ", err)
 	}
 
 	var name2 string = ""
-	if ok :=Eat(name2); !ok {
-		fmt.Println("cannot eat: ", name2)
+	if _, err := Eat(name2); err != nil {
+		fmt.Println("cannot eat: ", err)
 	}
 }

@@ -3,5 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hello, W0rld!!")
+	var Watashi_no_Hensu string = "GYUDON"
+	fmt.Println(Watashi_no_Hensu)
 }

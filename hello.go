@@ -2,23 +2,23 @@ package main
 
 import "fmt"
 
-
-func Eat(name string) (bool, error) {
+func Eat(name string) bool {
 	if name == "" {
-		return false, fmt.Errorf("name is empty.")
+		return false
+	} else {
+		fmt.Println(name)
+		return true
 	}
-	fmt.Println(name)
-	return true, nil
 }
 
 func main() {
 	var name1 string = "GYUDON"
-	if _, err := Eat(name1); err != nil {
-		fmt.Println("cannot eat: ", err)
+	if ok := Eat(name1); !ok {
+		fmt.Println("cannt eat: ", name1)
 	}
 
 	var name2 string = ""
-	if _, err := Eat(name2); err != nil {
-		fmt.Println("cannot eat: ", err)
+	if ok := Eat(name2); !ok {
+		fmt.Println("cannt eat: ", name2)
 	}
 }

@@ -1,7 +1,35 @@
-package main
+package shop
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+	"os"
+	"./shop"
+)
+
+type Gyudon struct {
+	menu string
+}
+
+func NewGyudon() Gyudon { //変数定義用の関数
+	return Gyudon{
+		menu: "NegitamaGyudon",
+	}
+}
+
+func (self *Gyudon) Eat() (bool, error) {
+	if self.menu == "" {
+		return false, fmt.Errorf("name is empty")
+	}
+
+	time.Sleep(time.Second * 10) //擬似食べてる時間
+	fmt.Println(self.menu)
+	return true, nil
+}
 
 func main() {
-	fmt.Println("Hello, W0rld!!")
+	myshop := shop.NewGyudon()
+	if _, err := myshop.Eat(); err != nil {
+		fmt.Fprintf(os.Stderr, "cannot eat: '%s'\n" , err)
+	}
 }

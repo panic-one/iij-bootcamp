@@ -9,7 +9,7 @@ type Gyudon struct {
 	menu string
 }
 
-func NewGyudon() Gyudon { //変数定義用の関数
+func NewGyudon() Gyudon { 
 	return Gyudon{
 		menu: "NegitamaGyudon",
 	}
@@ -20,7 +20,7 @@ func (self *Gyudon) Eat() (bool, error) {
 		return false, fmt.Errorf("name is empty.")
 	}
 
-	time.Sleep(time.Second * 10) //擬似食べてる時間
+	time.Sleep(time.Second * 10) 
 	fmt.Println(self.menu)
 	return true, nil
 }

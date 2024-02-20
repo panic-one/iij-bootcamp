@@ -2,12 +2,26 @@ package shop
 
 import (
 	"fmt"
+	"time"
 )
 
-func Eat(name string) (bool, error) {
-	if name == "" {
+type Gyudon struct {
+	menu string
+}
+
+func NewGyudon() Gyudon { //変数定義用の関数
+	return Gyudon{
+		menu: "NegitamaGyudon",
+	}
+}
+
+func (self *Gyudon) Eat() (bool, error) {
+	if self.menu == "" {
 		return false, fmt.Errorf("name is empty.")
 	}
-	fmt.Println(name)
+
+	time.Sleep(time.Second * 10) //擬似食べてる時間
+	fmt.Println(self.menu)
 	return true, nil
 }
+ 

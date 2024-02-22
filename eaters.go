@@ -1,14 +1,15 @@
 package main
 
 import (
-	"os"
-	"fmt"
 	"iij-bootcamp/shop"
+	"net/http"
 )
 
 func main() {
 	myshop := shop.NewGyudon()
-	if _, err := myshop.Eat(); err != nil {
-		fmt.Fprintf(os.Stderr, "cannot eat: '%s'\n" , err)
+	http.HandleFunc("/", myshop.Eat)
+	err := http.ListenAndServe("localhost:8080", nil)
+	if err != nil {
+		panic(err)
 	}
 }
